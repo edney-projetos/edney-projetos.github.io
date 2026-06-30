@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fotografia · Portfólio Moderno</title>
+  <!-- Bootstrap 5.3 + ícones -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <!-- Google Font (clean e moderna) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      background-color: #0b0b0b;
+      color: #f0f0f0;
+      font-family: 'Inter', sans-serif;
+      scroll-behavior: smooth;
+      line-height: 1.6;
+    }
+    /* tipografia clean */
+    h1, h2, h3, h4, h5, h6 {
+      font-weight: 600;
+      letter-spacing: -0.02em;
+    }
+    .display-4 {
+      font-weight: 700;
+      letter-spacing: -0.03em;
+    }
+    .lead {
+      font-weight: 300;
+      color: #c0c0c0;
+    }
+    /* navbar transparente com leve brilho */
+    .navbar {
+      background: rgba(11, 11, 11, 0.75);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+      padding: 0.8rem 0;
+    }
+    .navbar-brand {
+      font-weight: 700;
+      font-size: 1.6rem;
+      letter-spacing: -0.5px;
+    }
+    .navbar-brand i {
+      color: #d4a373;
+      margin-right: 8px;
+    }
+    .nav-link {
+      font-weight: 400;
+      color: #ddd !important;
+      margin: 0 0.4rem;
+      padding: 0.5rem 0.8rem !important;
+      border-radius: 30px;
+      transition: all 0.2s;
+    }
+    .nav-link:hover {
+      background: rgba(255, 255, 255, 0.06);
+      color: #fff !important;
+    }
+    .nav-link.active {
+      background: rgba(212, 163, 115, 0.15);
+      color: #d4a373 !important;
+    }
+    /* hero com fundo preto e detalhe sutil */
+    .hero {
+      padding: 8rem 0 5rem;
+      background: radial-gradient(circle at 20% 30%, #1a1a1a, #0b0b0b 80%);
+      border-bottom: 1px solid #222;
+    }
+    .hero h1 {
+      font-size: 3.8rem;
+      font-weight: 700;
+    }
+    .hero .highlight {
+      color: #d4a373;
+    }
+    .btn-outline-gold {
+      color: #d4a373;
+      border: 1px solid #d4a373;
+      border-radius: 50px;
+      padding: 0.7rem 2rem;
+      font-weight: 500;
+      transition: all 0.25s;
+    }
+    .btn-outline-gold:hover {
+      background: #d4a373;
+      color: #0b0b0b;
+      border-color: #d4a373;
+      box-shadow: 0 0 20px rgba(212, 163, 115, 0.3);
+    }
+    .btn-gold {
+      background: #d4a373;
+      color: #0b0b0b;
+      border: none;
+      border-radius: 50px;
+      padding: 0.7rem 2.2rem;
+      font-weight: 600;
+      transition: all 0.25s;
+    }
+    .btn-gold:hover {
+      background: #e0b68a;
+      color: #000;
+      box-shadow: 0 0 25px rgba(212, 163, 115, 0.5);
+    }
+    /* seções */
+    .section-title {
+      position: relative;
+      display: inline-block;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+    }
+    .section-title::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -8px;
+      width: 60px;
+      height: 3px;
+      background: #d4a373;
+      border-radius: 4px;
+    }
+    .section-sub {
+      color: #aaa;
+      font-weight: 300;
+      margin-top: 1.8rem;
+    }
+    /* cards de categoria - estilo clean e moderno */
+    .category-card {
+      background: #141414;
+      border: 1px solid #2a2a2a;
+      border-radius: 24px;
+      padding: 2.2rem 1.5rem;
+      text-align: center;
+      transition: all 0.3s ease;
+      height: 100%;
+      backdrop-filter: blur(2px);
+    }
+    .category-card:hover {
+      transform: translateY(-6px);
+      border-color: #d4a373;
+      background: #1a1a1a;
+      box-shadow: 0 16px 40px rgba(0,0,0,0.7);
+    }
+    .category-card i {
+      font-size: 3.2rem;
+      color: #d4a373;
+      margin-bottom: 1.2rem;
+    }
+    .category-card h4 {
+      font-weight: 600;
+      margin-bottom: 0.6rem;
+      color: #f5f5f5;
+    }
+    .category-card p {
+      color: #b0b0b0;
+      font-size: 0.95rem;
+    }
+    .category-card .badge-count {
+      background: #2a2a2a;
+      color: #d4a373;
+      padding: 0.3rem 1rem;
+      border-radius: 30px;
+      font-size: 0.75rem;
+      font-weight: 400;
+      letter-spacing: 0.3px;
+      display: inline-block;
+      margin-top: 0.8rem;
+    }
+    /* grid de fotos (placeholder) */
+    .photo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.2rem;
+      margin-top: 2rem;
+    }
+    .photo-item {
+      background: #181818;
+      border-radius: 20px;
+      overflow: hidden;
+      aspect-ratio: 1 / 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid #2a2a2a;
+      transition: all 0.25s;
+      color: #555;
+      font-size: 0.9rem;
+      font-weight: 300;
+      position: relative;
+    }
+    .photo-item i {
+      font-size: 2.6rem;
+      color: #3a3a3a;
+      margin-bottom: 6px;
+    }
+    .photo-item span {
+      display: block;
+      color: #6a6a6a;
+    }
+    .photo-item:hover {
+      border-color: #d4a373;
+      background: #202020;
+      transform: scale(1.01);
+    }
+    .photo-item .overlay-icon {
+      position: absolute;
+      bottom: 12px;
+      right: 14px;
+      color: #d4a373;
+      font-size: 1.2rem;
+      opacity: 0.4;
+    }
+    /* footer */
+    .footer {
+      background: #0a0a0a;
+      border-top: 1px solid #1f1f1f;
+      padding: 2.5rem 0 1.8rem;
+      color: #888;
+    }
+    .footer a {
+      color: #bbb;
+      text-decoration: none;
+      transition: 0.2s;
+    }
+    .footer a:hover {
+      color: #d4a373;
+    }
+    .social-icon {
+      font-size: 1.4rem;
+      margin: 0 0.5rem;
+      color: #666;
+      transition: 0.2s;
+    }
+    .social-icon:hover {
+      color: #d4a373;
+    }
+
+    /* responsivo */
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2.8rem;
+      }
+      .hero {
+        padding: 5rem 0 3rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container">
+      <a class="navbar-brand text-white" href="#">
+        <i class="bi bi-camera-fill"></i>LENS<span style="color:#d4a373;">&</span>SOUL
+      </a>
+      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" 
+        aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon" style="filter: invert(1);"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navMenu">
+        <ul class="navbar-nav align-items-lg-center">
+          <li class="nav-item"><a class="nav-link active" href="#inicio">Início</a></li>
+          <li class="nav-item"><a class="nav-link" href="#categorias">Categorias</a></li>
+          <li class="nav-item"><a class="nav-link" href="#portfolio">Portfólio</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contato">Contato</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section id="inicio" class="hero">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-7 mb-5 mb-lg-0">
+          <span class="badge bg-dark text-gold py-2 px-4 mb-3" style="color:#d4a373; border:1px solid #333;">
+            <i class="bi bi-star-fill me-1" style="color:#d4a373;"></i> Fotografia autoral
+          </span>
+          <h1 class="display-4 fw-bold text-white">
+            Capturando <br><span class="highlight">emoções</span> em cada <br>clique
+          </h1>
+          <p class="lead mt-4" style="max-width: 500px;">
+            Casamento, natureza, fé e muito mais. Um olhar sensível sobre a vida através das lentes.
+          </p>
+          <div class="d-flex flex-wrap gap-3 mt-4">
+            <a href="#portfolio" class="btn btn-gold"><i class="bi bi-grid-3x3-gap-fill me-2"></i>Ver portfólio</a>
+            <a href="#contato" class="btn btn-outline-gold"><i class="bi bi-chat-dots me-2"></i>Fale comigo</a>
+          </div>
+          <div class="mt-5 d-flex gap-4 text-secondary" style="font-size:0.9rem;">
+            <span><i class="bi bi-check-circle-fill text-gold me-1" style="color:#d4a373;"></i> +120 sessões</span>
+            <span><i class="bi bi-heart-fill text-gold me-1" style="color:#d4a373;"></i> 5 anos de estrada</span>
+          </div>
+        </div>
+        <div class="col-lg-5 text-center text-lg-end">
+          <div class="position-relative">
+            <div style="background: #1c1c1c; border-radius: 40px; padding: 0.8rem 0.8rem 0; border:1px solid #2e2e2e;">
+              <img src="https://via.placeholder.com/400x450/1a1a1a/555?text=📸+Fotografia" alt="hero" class="img-fluid rounded-4" style="filter: grayscale(0.1);">
+            </div>
+            <div class="position-absolute bottom-0 start-0 translate-middle-y ms-3 bg-dark p-3 rounded-4 border border-secondary" style="background:#141414!important;">
+              <i class="bi bi-camera" style="font-size:2rem; color:#d4a373;"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CATEGORIAS -->
+  <section id="categorias" class="py-5" style="background: #0d0d0d;">
+    <div class="container py-4">
+      <div class="row mb-5">
+        <div class="col-md-8">
+          <h2 class="section-title text-white">Categorias <span style="color:#d4a373;">.</span></h2>
+          <p class="section-sub">Explore minha visão através de temas que traduzem a beleza do mundo.</p>
+        </div>
+      </div>
+      <div class="row g-4">
+        <!-- Casamento -->
+        <div class="col-md-3 col-sm-6">
+          <div class="category-card">
+            <i class="bi bi-ring-fill"></i>
+            <h4>Casamento</h4>
+            <p>Amor, celebração e momentos únicos.</p>
+            <span class="badge-count"><i class="bi bi-image me-1"></i> 32 fotos</span>
+          </div>
+        </div>
+        <!-- Natureza -->
+        <div class="col-md-3 col-sm-6">
+          <div class="category-card">
+            <i class="bi bi-tree-fill"></i>
+            <h4>Natureza</h4>
+            <p>Paisagens, flora e luz natural.</p>
+            <span class="badge-count"><i class="bi bi-image me-1"></i> 48 fotos</span>
+          </div>
+        </div>
+        <!-- Religiosidade -->
+        <div class="col-md-3 col-sm-6">
+          <div class="category-card">
+            <i class="bi bi-cross"></i>
+            <h4>Religiosidade</h4>
+            <p>Fé, espiritualidade e tradição.</p>
+            <span class="badge-count"><i class="bi bi-image me-1"></i> 27 fotos</span>
+          </div>
+        </div>
+        <!-- Retratos / Urbanos (criatividade) -->
+        <div class="col-md-3 col-sm-6">
+          <div class="category-card">
+            <i class="bi bi-person-arms-up"></i>
+            <h4>Retratos &amp; Urban</h4>
+            <p>Expressão, street e diversidade.</p>
+            <span class="badge-count"><i class="bi bi-image me-1"></i> 41 fotos</span>
+          </div>
+        </div>
+        <!-- + uma extra: Eventos -->
+        <div class="col-md-3 col-sm-6">
+          <div class="category-card">
+            <i class="bi bi-calendar-event-fill"></i>
+            <h4>Eventos</h4>
+            <p>Festas, shows e confraternizações.</p>
+            <span class="badge-count"><i class="bi bi-image me-1"></i> 23 fotos</span>
+          </div>
+        </div>
+        <!-- Preto e Branco (criatividade) -->
+        <div class="col-md-3 col-sm-6">
+          <div class="category-card">
+            <i class="bi bi-camera2"></i>
+            <h4>Preto &amp; Branco</h4>
+            <p>Contrastes, texturas e emoção.</p>
+            <span class="badge-count"><i class="bi bi-image me-1"></i> 36 fotos</span>
+          </div>
+        </div>
+        <!-- Arquitetura -->
+        <div class="col-md-3 col-sm-6">
+          <div class="category-card">
+            <i class="bi bi-building"></i>
+            <h4>Arquitetura</h4>
+            <p>Linhas, geometria e modernidade.</p>
+            <span class="badge-count"><i class="bi bi-image me-1"></i> 19 fotos</span>
+          </div>
+        </div>
+        <!-- Lifestyle -->
+        <div class="col-md-3 col-sm-6">
+          <div class="category-card">
+            <i class="bi bi-heart-fill"></i>
+            <h4>Lifestyle</h4>
+            <p>Dia a dia, moda e autenticidade.</p>
+            <span class="badge-count"><i class="bi bi-image me-1"></i> 29 fotos</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PORTFÓLIO (grid de fotos) -->
+  <section id="portfolio" class="py-5" style="background: #0b0b0b;">
+    <div class="container py-4">
+      <div class="row mb-4">
+        <div class="col-md-8">
+          <h2 class="section-title text-white">Portfólio <span style="color:#d4a373;">.</span></h2>
+          <p class="section-sub">Uma seleção de imagens que contam histórias. Clique para ampliar (em breve).</p>
+        </div>
+      </div>
+      <!-- grid responsivo com placeholders ilustrativos -->
+      <div class="photo-grid">
+        <div class="photo-item"><i class="bi bi-camera-fill"></i><span>Casamento</span><div class="overlay-icon"><i class="bi bi-zoom-in"></i></div></div>
+        <div class="photo-item"><i class="bi bi-tree-fill"></i><span>Natureza</span><div class="overlay-icon"><i class="bi bi-zoom-in"></i></div></div>
+        <div class="photo-item"><i class="bi bi-cross"></i><span>Religiosidade</span><div class="overlay-icon"><i class="bi bi-zoom-in"></i></div></div>
+        <div class="photo-item"><i class="bi bi-person-fill"></i><span>Retratos</span><div class="overlay-icon"><i class="bi bi-zoom-in"></i></div></div>
+        <div class="photo-item"><i class="bi bi-building"></i><span>Arquitetura</span><div class="overlay-icon"><i class="bi bi-zoom-in"></i></div></div>
+        <div class="photo-item"><i class="bi bi-calendar-week-fill"></i><span>Eventos</span><div class="overlay-icon"><i class="bi bi-zoom-in"></i></div></div>
+        <div class="photo-item"><i class="bi bi-camera2"></i><span>P&amp;B</span><div class="overlay-icon"><i class="bi bi-zoom-in"></i></div></div>
+        <div class="photo-item"><i class="bi bi-heart-fill"></i><span>Lifestyle</span><div class="overlay-icon"><i class="bi bi-zoom-in"></i></div></div>
+        <div class="photo-item"><i class="bi bi-bicycle"></i><span>Urban</span><div class="overlay-icon"><i class="bi bi-zoom-in"></i></div></div>
+        <div class="photo-item"><i class="bi bi-sun-fill"></i><span>Luz</span><div class="overlay-icon"><i class="bi bi-zoom-in"></i></div></div>
+      </div>
+      <div class="text-center mt-5">
+        <a href="#" class="btn btn-outline-gold px-5 py-2"><i class="bi bi-plus-circle me-2"></i>Ver mais trabalhos</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTATO / SOBRE -->
+  <section id="contato" class="py-5" style="background: #0d0d0d; border-top: 1px solid #1c1c1c;">
+    <div class="container py-4">
+      <div class="row g-5 align-items-center">
+        <div class="col-md-6">
+          <h2 class="section-title text-white">Vamos criar <span style="color:#d4a373;">juntos</span></h2>
+          <p class="lead mt-4" style="color:#ccc;">Entre em contato para sessões fotográficas, parcerias ou apenas um bate-papo sobre fotografia.</p>
+          <ul class="list-unstyled mt-4" style="color:#aaa;">
+            <li class="mb-3"><i class="bi bi-envelope-fill me-3" style="color:#d4a373;"></i> contato@lensoul.foto</li>
+            <li class="mb-3"><i class="bi bi-whatsapp me-3" style="color:#d4a373;"></i> +55 (51) 99999-9999</li>
+            <li><i class="bi bi-geo-alt-fill me-3" style="color:#d4a373;"></i> Porto Alegre · Brasil</li>
+          </ul>
+          <div class="mt-4">
+            <a href="#" class="social-icon"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="social-icon"><i class="bi bi-behance"></i></a>
+            <a href="#" class="social-icon"><i class="bi bi-vimeo"></i></a>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div style="background:#141414; border-radius: 30px; padding: 2rem; border:1px solid #2a2a2a;">
+            <h5 class="text-white fw-normal">Fale diretamente</h5>
+            <form>
+              <div class="mb-3">
+                <input type="text" class="form-control bg-black text-white border-secondary" placeholder="Seu nome" style="border-radius: 40px; padding: 0.8rem 1.2rem;">
+              </div>
+              <div class="mb-3">
+                <input type="email" class="form-control bg-black text-white border-secondary" placeholder="E-mail" style="border-radius: 40px; padding: 0.8rem 1.2rem;">
+              </div>
+              <div class="mb-3">
+                <textarea class="form-control bg-black text-white border-secondary" rows="2" placeholder="Mensagem..." style="border-radius: 20px; padding: 0.8rem 1.2rem;"></textarea>
+              </div>
+              <button type="submit" class="btn btn-gold w-100 py-2"><i class="bi bi-send-fill me-2"></i>Enviar</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-md-6">
+          <span class="text-white-50">© 2026 LENS&SOUL · fotografia autoral</span>
+        </div>
+        <div class="col-md-6 text-md-end mt-3 mt-md-0">
+          <a href="#" class="me-3">Sobre</a>
+          <a href="#" class="me-3">Blog</a>
+          <a href="#">Clientes</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS (para toggle, etc) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- pequeno script para destacar link ativo (opcional) -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const navLinks = document.querySelectorAll('.nav-link');
+      navLinks.forEach(link => {
+        link.addEventListener('click', function() {
+          navLinks.forEach(l => l.classList.remove('active'));
+          this.classList.add('active');
+        });
+      });
+    });
+  </script>
+</body>
+</html>
